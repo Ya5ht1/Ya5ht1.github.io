@@ -1,1 +1,277 @@
+<html>
+    <head>
+        <title>Cybersecurity</title>
+        <link rel="stylesheet" href="main.css" type="text/css">
+        <style>
+            .image-carousel {
+                position: relative;
+                width: 100%;
+                max-width: 800px;
+                margin: 20px auto;
+                overflow: hidden;
+            }
+            .carousel-container {
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+            .carousel-image {
+                min-width: 100%;
+                height: 300px;
+                object-fit: cover;
+                display: none;
+            }
+            .carousel-image.active {
+                display: block;
+            }
+            .carousel-controls {
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                transform: translateY(-50%);
+            }
+            .carousel-prev, .carousel-next {
+                background: rgba(0,0,0,0.5);
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="nav"> 
+            <a href="index.html"><img src="logo.png" alt="logo" class="logo"></a>
+            <h1 class="title" style="color: #2B2826;">Cybersecurity</h1>
+            <h2 class="intro" style="color: #576B75;">The protection of information technology<br>
+                elements, including hardware and software, data<br>
+                or network services.
+            </h2>
+        </div>
+        <div class="three-columns">
+            <div class="column">
+                <div class="button-container">
+                    <a href="whatisit.html" class="nav-button" style="background-color: #C4996E; border-color: #C4996E; color: #2B2826;">
+                        <h1>What is it?</h1>
+                    </a>
+                    <h2 class="whatisitcaption" style="color: #000000;">
+                        Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. 
+                        It involves implementing measures to prevent unauthorized access, data breaches, and other cyber threats 
+                        through technologies like encryption, firewalls, and multi-factor authentication. Effective cybersecurity 
+                        safeguards sensitive information and maintains system integrity.
+                    </h2>
+                </div>
+            </div>
+            <div class="column">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/1lAR_TocefM" 
+                            title="YouTube video player" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="column">
+                <div class="button-container">
+                    <a href="cyberattacks.html" class="nav-button" style="background-color: #C4996E; border-color: #C4996E; color: #2B2826;">
+                        <h1>Cyberattacks</h1>
+                    </a>
+                    <h2 class="cyberattackscaption" style="color: #000000;">
+                        Cyberattacks are malicious attempts to access, damage, or disrupt computer systems. 
+                        Common types include malware, phishing, ransomware, DDoS attacks, and SQL injection. 
+                        These attacks can steal sensitive data, disrupt operations, or hold systems hostage for ransom.
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="image-carousel">
+            <div class="carousel-container">
+                <img src="encryption.png" alt="Encryption" class="carousel-image active">
+                <img src="MFA.png" alt="Multi-Factor Authentication" class="carousel-image">
+                <img src="Phishing.png" alt="Phishing" class="carousel-image">
+                <img src="Ransomware.png" alt="Ransomware" class="carousel-image">
+                <img src="Firewall.png" alt="Firewall" class="carousel-image">
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-prev">❮</button>
+                <button class="carousel-next">❯</button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let currentIndex = 0;
+                const images = document.querySelectorAll('.carousel-image');
+                const prevBtn = document.querySelector('.carousel-prev');
+                const nextBtn = document.querySelector('.carousel-next');
+                
+                function showImage(index) {
+                    images.forEach(img => img.classList.remove('active'));
+                    images[index].classList.add('active');
+                }
+                
+                function showNext() {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                }
+                
+                function showPrev() {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    showImage(currentIndex);
+                }
+                
+                // Auto-advance every 3 seconds
+                let interval = setInterval(showNext, 3000);
+                
+                // Pause on hover
+                document.querySelector('.image-carousel').addEventListener('mouseenter', () => {
+                    clearInterval(interval);
+                });
+                
+                document.querySelector('.image-carousel').addEventListener('mouseleave', () => {
+                    interval = setInterval(showNext, 3000);
+                });
+                
+                // Button controls
+                nextBtn.addEventListener('click', showNext);
+                prevBtn.addEventListener('click', showPrev);
+            });
+        </script>
+        <div class="feedback-form">
+            <h2>Have feedback? Let us know!</h2>
+            <form>
+                <input type="text" placeholder="Your name">
+                <input type="email" placeholder="Your email">
+                <textarea placeholder="Your feedback"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="news-section">
+            <h2>Latest Cybersecurity Tips</h2>
+            <div class="news-item">
+                <h3>Use Strong Passwords</h3>
+                <p>Create complex passwords with a mix of letters, numbers and symbols.</p>
+            </div>
+            <div class="news-item">
+                <h3>Enable Two-Factor Authentication</h3>
+                <p>Add an extra layer of security to your important accounts.</p>
+            </div>
+            <div class="news-item">
+                <h3>Update Software Regularly</h3>
+                <p>Keep your operating system and apps updated to patch security vulnerabilities.</p>
+            </div>
+        </div>
+        <div class="helpful-links" style="background-color: #9B9282; padding: 20px; text-align: center; margin-top: 40px; font-family: 'Quicksand', sans-serif;">
+            <h2 style="color: #2B2826;">Help for Those Affected by Cyberattacks</h2>
+            <ul style="list-style-type: none; padding: 0;">
+                <li><a href="https://www.cyber.gov.au/report-and-recover/report" target="_blank" rel="noopener noreferrer" style="color: #2B2826;">Report Cybercrime (Australian Cyber Security Centre)</a></li>
+                <li><a href="https://www.cyber.gov.au/" target="_blank" rel="noopener noreferrer" style="color: #2B2826;">Australian Cyber Security Centre (ACSC)</a></li>
+                <li><a href="https://www.scamwatch.gov.au/" target="_blank" rel="noopener noreferrer" style="color: #2B2826;">Scamwatch - Australian Competition & Consumer Commission</a></li>
+                <li><a href="https://www.cyber.gov.au/acsc/view-all-content/reports-and-statistics" target="_blank" rel="noopener noreferrer" style="color: #2B2826;">ACSC Reports and Statistics</a></li>
+            </ul>
+        </div>
 
+        <!-- Chatbot UI -->
+        <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; width: 350px; max-height: 500px; background: #f9f9f9; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; font-family: Arial, sans-serif; z-index: 1000;">
+            <div id="chatbot-header" style="background-color: #C4996E; color: #2B2826; padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; font-weight: bold; cursor: pointer;">
+                Cybersecurity AI Chatbot
+                <span id="chatbot-toggle" style="float: right; cursor: pointer;">&#x2715;</span>
+            </div>
+            <div id="chatbot-messages" style="flex: 1; padding: 10px; overflow-y: auto; font-size: 14px; color: #2B2826; background: white;"></div>
+            <form id="chatbot-form" style="display: flex; border-top: 1px solid #ccc;">
+                <input type="text" id="chatbot-input" placeholder="Ask a cybersecurity question..." autocomplete="off" style="flex: 1; padding: 10px; border: none; border-bottom-left-radius: 10px;">
+                <button type="submit" style="background-color: #C4996E; border: none; color: #2B2826; padding: 10px 15px; cursor: pointer; border-bottom-right-radius: 10px;">Send</button>
+            </form>
+        </div>
+
+        <script>
+            (function() {
+                const chatbotContainer = document.getElementById('chatbot-container');
+                const chatbotToggle = document.getElementById('chatbot-toggle');
+                const chatbotMessages = document.getElementById('chatbot-messages');
+                const chatbotForm = document.getElementById('chatbot-form');
+                const chatbotInput = document.getElementById('chatbot-input');
+
+                // Toggle chatbot visibility
+                chatbotToggle.addEventListener('click', () => {
+                    if (chatbotContainer.style.height === '40px') {
+                        chatbotContainer.style.height = '500px';
+                        chatbotMessages.style.display = 'block';
+                        chatbotForm.style.display = 'flex';
+                    } else {
+                        chatbotContainer.style.height = '40px';
+                        chatbotMessages.style.display = 'none';
+                        chatbotForm.style.display = 'none';
+                    }
+                });
+
+                // Append message to chat window
+                function appendMessage(sender, text) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.style.marginBottom = '10px';
+                    if (sender === 'user') {
+                        messageDiv.style.textAlign = 'right';
+                        messageDiv.innerHTML = '<strong>You:</strong> ' + text;
+                    } else {
+                        messageDiv.style.textAlign = 'left';
+                        messageDiv.innerHTML = '<strong>Bot:</strong> ' + text;
+                    }
+                    chatbotMessages.appendChild(messageDiv);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }
+
+                // Function to call OpenAI API
+                async function getChatbotResponse(question) {
+                    const apiKey = 'YOUR_OPENAI_API_KEY_HERE';
+                    const endpoint = 'https://api.openai.com/v1/chat/completions';
+
+                    const systemPrompt = "You are a helpful AI assistant that ONLY answers questions related to cybersecurity. If the question is outside cybersecurity, politely inform the user that you can only answer cybersecurity questions.";
+
+                    const messages = [
+                        { role: "system", content: systemPrompt },
+                        { role: "user", content: question }
+                    ];
+
+                    try {
+                        const response = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + apiKey
+                            },
+                            body: JSON.stringify({
+                                model: "gpt-3.5-turbo",
+                                messages: messages,
+                                max_tokens: 150,
+                                temperature: 0.7
+                            })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('API error: ' + response.statusText);
+                        }
+
+                        const data = await response.json();
+                        return data.choices[0].message.content.trim();
+                    } catch (error) {
+                        return "Sorry, I am having trouble answering your question right now.";
+                    }
+                }
+
+                // Handle form submission
+                chatbotForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const question = chatbotInput.value.trim();
+                    if (!question) return;
+                    appendMessage('user', question);
+                    chatbotInput.value = '';
+                    appendMessage('bot', 'Thinking...');
+                    const response = await getChatbotResponse(question);
+                    // Remove the 'Thinking...' message
+                    chatbotMessages.removeChild(chatbotMessages.lastChild);
+                    appendMessage('bot', response);
+                });
+            })();
+        </script>
+    </body>
+</html>
